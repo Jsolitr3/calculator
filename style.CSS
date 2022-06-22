@@ -38,10 +38,11 @@ body{
     align-items: center;
     border-style: solid;
     border-color: black;
-    border-radius: 0;
+    border-radius: 1em;
     height: 15%;
     width: 90%;
     margin: 5% 0;
+    overflow: hidden;
 }
 .screen{
     width: 100%;
@@ -78,26 +79,25 @@ body{
 }
 .functional:active{
     background: linear-gradient(rgb(150,125,100), rgb(40, 25, 12) 0%);
-    box-shadow: 0px 0px #666;
+    box-shadow: 0px 0px ;
     transform: translateY(2px) translateX(2px);
 }
 .number:active{
     background: linear-gradient(rgb(255,255,255), rgb(50, 50, 50) 0%);
-    box-shadow: 0px 0px #666;
+    box-shadow: 0px 0px;
     transform: translateY(2px) translateX(2px);
 }
 .equals:active{
     background: linear-gradient(peru, rgb(125,80,40)0%);
-    box-shadow: 0px 0px #666;
+    box-shadow: 0px 0px;
     transform: translateY(2px) translateX(2px);
 }
-/* button:active {
-    box-shadow: 0px 0px #666;
-    transform: translateY(2px) translateX(2px);
-  } */
+
 button{
-    font-size: 1.5em;
-    box-shadow: 5px 5px #666;
+    color: whitesmoke;
+    text-shadow: 1px 1px black;
+    font-size: 1.25em;
+    box-shadow: 3px 3px 3px black;
     flex: 1;
     height: 15%;
     border-radius: 25%;
