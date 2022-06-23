@@ -5,42 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./style.CSS" />
-    <script src="./script.JS"></script>
+    <script src="./script.js" defer></script>
   </head>
-  <body>
+  <body id="main">
     <h1 class="title">Calculator</h1>
-    <div class="calculator">
+    <div id="calculator">
       <div class="screenContainer">
-        <div class="screen"></div>
+        <div class="screenHolder">
+          <div id="operation"></div>
+          <div id="screen"></div>
+        </div>
       </div>
       <div class="btnSection">
         <div class="btnContainer">
-          <button class="functional clear">C</button>
-          <button class="number">7</button>
-          <button class="number">4</button>
-          <button class="number">1</button>
-          <button class="number">0</button>
+          <button class="functional Delete" id="clear">C</button>
+          <button class="number 7">7</button>
+          <button class="number 4">4</button>
+          <button class="number 1">1</button>
+          <button class="number 0">0</button>
         </div>
         <div class="btnContainer">
-          <button class="functional sign">+/-</button>
-          <button class="number">8</button>
-          <button class="number">5</button>
-          <button class="number">2</button>
-          <button class="number decimal">.</button>
+          <button class="functional" id="sign">+/-</button>
+          <button class="number 8">8</button>
+          <button class="number 5">5</button>
+          <button class="number 2">2</button>
+          <button class="number ." id="decimal">.</button>
         </div>
         <div class="btnContainer">
-          <button class="functional divide">/</button>
-          <button class="number">9</button>
-          <button class="number">6</button>
-          <button class="number">3</button>
-          <button class="number delete">DEL</button>
+          <button class="functional /" id="divide">/</button>
+          <button class="number 9">9</button>
+          <button class="number 6">6</button>
+          <button class="number 3">3</button>
+          <button class="Backspace" id="delete">DEL</button>
         </div>
         <div class="btnContainer">
-          <button class="functional multiply">X</button>
-          <button class="functional subtract">-</button>
-          <button class="functional add">+</button>
-          <button class="equals">=</button>
+          <button class="functional *" id="multiply">X</button>
+          <button class="functional -" id="subtract">-</button>
+          <button class="functional +" id="add">+</button>
+          <button class="Enter" id="equals">=</button>
         </div>
       </div>
     </div>
