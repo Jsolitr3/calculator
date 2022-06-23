@@ -13,13 +13,13 @@ clearBtn.addEventListener('click', () => clear());
 const signBtn = document.getElementById('sign');
 signBtn.addEventListener('click', () => changeSign());
 const divideBtn = document.getElementById('divide');
-divideBtn.addEventListener('click', () => divide());
+divideBtn.addEventListener('click', () => solve(divideBtn.innerText));
 const multiplyBtn = document.getElementById('multiply');
-multiplyBtn.addEventListener('click', () => multiply());
+multiplyBtn.addEventListener('click', () => solve(multiplyBtn.innerText));
 const subtractBtn = document.getElementById('subtract');
-subtractBtn.addEventListener('click', () => subtract());
+subtractBtn.addEventListener('click', () => solve(subtractBtn.innerText));
 const addBtn = document.getElementById('add');
-addBtn.addEventListener('click', () => add());
+addBtn.addEventListener('click', () => solve(addBtn.innerText));
 const deleteBtn = document.getElementById('delete');
 deleteBtn.addEventListener('click', () => removeLastNum());
 let var1 = "";
@@ -57,117 +57,19 @@ function logkey(e){
     };
 };
 function add(){
-    if (!screen.innerText==""){
-        if (number1 == false) {
-            operation.textContent ="+";
-            var1 = parseFloat(screen.innerText);
-            number1 = true;
-            if (equation == true) {
-                equation = false;
-            }
-        } else if ((number2 == true) && (equation == true)) {
-            var2 = parseFloat(screen.innerText);
-            displayResult(var1 + var2);
-            var1 = parseFloat(screen.innerText);
-            operation.textContent ="";
-            number1 = false;
-            number2 = false;
-        } else if ((number2 == true) && (equation == false)) {
-            var2 = parseFloat(screen.innerText);
-            displayResult(var1 + var2);
-            var1 = parseFloat(screen.innerText);
-            operation.textContent ="+";
-            number1 = true;
-            number2 = false;
-        };
-    };
+    displayResult(var1 + var2);
 };
 
 function subtract(){
-    if (!screen.innerText==""){
-        if (number1 == false) {
-            operation.textContent ="-";
-            var1 = parseFloat(screen.innerText);
-            number1 = true;
-            if (equation == true) {
-                equation = false;
-            }
-        } else if ((number2 == true) && (equation == true)) {
-            var2 = parseFloat(screen.innerText);
-            displayResult(var1 - var2);
-            var1 = parseFloat(screen.innerText);
-            operation.textContent ="";
-            number1 = false;
-            number2 = false;
-        } else if ((number2 == true) && (equation == false)) {
-            var2 = parseFloat(screen.innerText);
-            displayResult(var1 - var2);
-            var1 = parseFloat(screen.innerText);
-            operation.textContent ="-";
-            number1 = true;
-            number2 = false;
-        };
-    };
-    
+    displayResult(var1 - var2);
 };
 
 function divide(){
-    if (!screen.innerText==""){
-        if (number1 == false) {
-            operation.textContent ="÷";
-            var1 = parseFloat(screen.innerText);
-            number1 = true;
-            if (equation == true) {
-                equation = false;
-            }
-        } else if ((number2 == true) && (equation == true)) {
-            var2 = parseFloat(screen.innerText);
-            if (var2 == 0){
-                displayResult('!');
-            } else displayResult(var1 / var2);
-            
-            var1 = parseFloat(screen.innerText);
-            operation.textContent ="";
-            number1 = false;
-            number2 = false;
-        } else if ((number2 == true) && (equation == false)) {
-            var2 = parseFloat(screen.innerText);
-            displayResult(var1 / var2);
-            var1 = parseFloat(screen.innerText);
-            operation.textContent ="÷";
-            number1 = true;
-            number2 = false;
-        };
-    };
-    
+    displayResult(var1 / var2);
 };
 
 function multiply(){
-    if (!screen.innerText==""){
-        if (number1 == false) {
-            operation.textContent ="x";
-            var1 = parseFloat(screen.innerText);
-            number1 = true;
-            if (equation == true) {
-                equation = false;
-            }
-        } else if ((number2 == true) && (equation == true)) {
-            var2 = parseFloat(screen.innerText);
-            displayResult(var1 * var2);
-            var1 = parseFloat(screen.innerText);
-            operation.textContent ="";
-            number1 = false;
-            number2 = false;
-        } else if ((number2 == true) && (equation == false)) {
-            var2 = parseFloat(screen.innerText);
-            displayResult(var1 * var2);
-            var1 = parseFloat(screen.innerText);
-            operation.textContent ="x";
-            number1 = true;
-            number2 = false;
-        };
-    };
-    
+    displayResult(var1 * var2);
 };
 
 function clear(){
@@ -188,25 +90,72 @@ function changeSign(){
 };
 
 function equals(){
-    equation = true;
-    switch (operation.innerText){
+    if (number2 == true){
+        equation = true;
+        solve();
+    }
+};
+function setOperator(operator){
+    switch (operator){
         case '÷':
-            divide();
+            operation.innerText = "÷";
             break;
-        case 'x':
-            multiply();
+        case '/':
+            operation.innerText = "÷";
+            break;
+        case 'X':
+            operation.innerText = "x";
             break;
         case '-':
-            subtract();
+            operation.innerText = "-";
             break;
         case '+':
-            add();
+            operation.innerText = "+";
             break;
+        default:
+            operation.innerText = "";
+    };
+}
+function solve(operator){
+    if (!screen.innerText==""){
+        if (number1 == false) {
+            var1 = parseFloat(screen.innerText);
+            number1 = true;
+            if (equation == true) {
+                equation = false;
+            }
+            setOperator(operator);
+        } else if (number2 == true) {
+            var2 = parseFloat(screen.innerText);
+            switch (operation.innerText){
+                case '÷':
+                    divide();
+                    break;
+                case 'x':
+                    multiply();
+                    break;
+                case '-':
+                    subtract();
+                    break;
+                case '+':
+                    add();
+                    break;
+            };
+            number2 = false;
+            if (equation == false){
+                var1 = parseFloat(screen.innerText);
+                number1 = true;
+                setOperator(operator);
+            } else {
+                operation.innerText ="";
+                number1 = false;
+            };
+        };
     };
 };
 
 function removeLastNum(){
-    if (!(equation = true)){
+    if (equation == false){
         screen.innerText = screen.innerText.slice(0,-1);
     };
 };
