@@ -41,7 +41,7 @@ function logkey(e){
             subtract();
             break;
         case '+':
-            divide();
+            add();
             break;
         case 'Enter':
             equals();
@@ -81,9 +81,6 @@ function add(){
             number2 = false;
         };
     };
-    if (equation == true) {
-        equation = false;
-    }
 };
 
 function subtract(){
@@ -203,7 +200,7 @@ function equals(){
             subtract();
             break;
         case '+':
-            divide();
+            add();
             break;
     };
 };
